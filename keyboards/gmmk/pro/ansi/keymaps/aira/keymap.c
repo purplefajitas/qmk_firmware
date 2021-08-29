@@ -16,10 +16,37 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 
+<<<<<<< HEAD
+enum custom_keycodes {
+    ENYE = SAFE_RANGE
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (record->event.pressed) {
+        switch(keycode) {
+            case ENYE:
+                // This seems too complicated
+                SEND_STRING(SS_DOWN(X_RALT));
+                SEND_STRING(SS_TAP(X_KP_1));
+                SEND_STRING(SS_TAP(X_KP_6));
+                SEND_STRING(SS_TAP(X_KP_4));
+                SEND_STRING(SS_UP(X_RALT));
+                return false;
+        }
+    }
+    return true;
+};
+
+// clang-format off
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+
+//      ESC      F1       F2       F3       F4       F5       F6       F7       F8       F9       F10      F11      F12	     Prt           Rotary(Mute)
+=======
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 //      ESC      F1       F2       F3       F4       F5       F6       F7       F8       F9       F10      F11      F12	     Prt           Rotary(Play)
+>>>>>>> c77eef04e58e161ebe0029323c87162a4393468c
 //      ~        1        2        3        4        5        6        7        8        9        0         -       (=)	     BackSpc           Del
 //      Tab      Q        W        E        R        T        Y        U        I        O        P        [        ]        \                 PgUp
 //      Caps     A        S        D        F        G        H        J        K        L        ;        "                 Enter             PgDn
@@ -50,9 +77,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [1] = LAYOUT(
         _______, KC_MYCM, KC_WHOM, KC_CALC, KC_MSEL, KC_MPRV, KC_MNXT, KC_MPLY, KC_MSTP, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______,          _______,
         _______, RGB_TOG, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
+<<<<<<< HEAD
+        _______, _______, RGB_VAI, RGB_HUD, RGB_SAI, _______, _______, _______, _______, _______, _______, _______, _______, RESET,            _______,
+        _______, _______, RGB_VAD, RGB_HUI, RGB_SAD, _______, _______, _______, _______, _______, _______, _______,          _______,          _______,
+        _______,          _______, _______, _______, _______, _______, ENYE, _______, _______, _______, _______,          _______, RGB_MOD, _______,
+=======
         _______, _______, RGB_VAI, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RESET,            _______,
         _______, _______, RGB_VAD, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,          _______,
         _______,          _______, RGB_HUI, _______, _______, _______, NK_TOGG, _______, _______, _______, _______,          _______, RGB_MOD, _______,
+>>>>>>> c77eef04e58e161ebe0029323c87162a4393468c
         _______, _______, _______,                            _______,                            _______, _______, _______, RGB_SPD, RGB_RMOD, RGB_SPI
     ),
 
